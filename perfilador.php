@@ -4,15 +4,13 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>Perfilador Dinámico</title>
-		<link rel="stylesheet" href="style.css?v=2" />
+		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
 		<main class="container">
 			<?php
-			// Captura de variable por método GET (saludo/nombre)
 			$saludo = htmlspecialchars($_GET['saludo'] ?? '');
 			
-			// Mostrar saludo de bienvenida si existe parámetro GET
 			if (!empty($saludo)) {
 				echo "<div class='alert alert-success'>
 						<svg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'>
@@ -23,16 +21,12 @@
 					</div>";
 			}
 
-			// Validar si se envió el formulario usando $_POST
 			if ($_SERVER["REQUEST_METHOD"] === "POST") {
-				// Prevención básica de XSS con htmlspecialchars()
 				$nombre = htmlspecialchars($_POST['nombre'] ?? '');
 				$edad = htmlspecialchars($_POST['edad'] ?? '');
 				$hobby = htmlspecialchars($_POST['hobby'] ?? '');
 
-				// Validación básica
 				if (!empty($nombre) && !empty($edad)) {
-					// Lógica de control: mensaje personalizado según edad
 					if ($edad >= 60) {
 						$mensaje = "Perfil Senior";
 						$inicial = strtoupper(substr($nombre, 0, 1));
@@ -48,7 +42,6 @@
 					}
 					?>
 
-					<!-- Tarjeta de Perfil Dinámica -->
 					<div class="card <?php echo $clase; ?>">
 						<div class="card-header">
 							<div class="avatar <?php echo $clase; ?>"><?php echo $inicial; ?></div>
@@ -68,7 +61,7 @@
 							</div>
 						</div>
 						<div class="card-footer">
-							<a href="index.php" class="btn-back">
+							<a href="perfilador.php" class="btn-back">
 								<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
 									<polyline points="15 18 9 12 15 6"></polyline>
 								</svg>
@@ -117,7 +110,7 @@
 								<rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
 								<line x1="16" y1="2" x2="16" y2="6"></line>
 								<line x1="8" y1="2" x2="8" y2="6"></line>
-								<line x1="3" y1="10" x2="21" y2="10"></line>
+								<line x1="3" y1="10" x2="21" y10="10"></line>
 							</svg>
 							Edad
 						</label>
@@ -167,7 +160,7 @@
 				</form>
 			</div>
 
-			<?php } ?> 
+			<?php } ?>
 		</main>
 	</body>
 </html>
